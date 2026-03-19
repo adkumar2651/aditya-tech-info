@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Top Laptops — Aditya Tech Info</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--accent:#FF4D00;--accent-light:#FF7A40;--dark:#0D0D0D;--surface:#161616;--surface2:#1e1e1e;--muted:#777;--border:rgba(255,255,255,0.08);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;overflow-x:hidden;}
+h1,h2,h3,.syne{font-family:'Syne',sans-serif;}
+
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+#navbar.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.7);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 28px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:#fff;text-decoration:none;letter-spacing:-0.5px;}
+.nav-logo span{color:var(--accent);}
+nav{display:flex;gap:4px;}
+nav a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:.88rem;font-weight:500;padding:7px 14px;border-radius:8px;transition:.2s;}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,0.07);}
+nav a.active{color:var(--accent);}
+
+.page-hero{padding:120px 28px 50px;max-width:1200px;margin:0 auto;}
+.page-eyebrow{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);margin-bottom:10px;}
+.page-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:14px;}
+.page-sub{color:rgba(255,255,255,0.45);font-size:.95rem;max-width:500px;line-height:1.7;}
+
+.products-section{max-width:1200px;margin:0 auto;padding:0 28px 80px;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;text-decoration:none;color:#fff;transition:.3s;display:flex;flex-direction:column;position:relative;}
+.card:hover{border-color:rgba(255,77,0,0.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+.card:hover .card-img-wrap img{transform:scale(1.05);}
+.card-img-wrap{width:100%;height:190px;overflow:hidden;background:#111;position:relative;}
+.card-img-wrap img{width:100%;height:100%;object-fit:contain;padding:12px;transition:.4s ease;background:#111;}
+.card-badge{position:absolute;top:12px;left:12px;font-family:'Syne',sans-serif;font-weight:800;font-size:.62rem;text-transform:uppercase;letter-spacing:.8px;padding:4px 10px;border-radius:999px;color:#fff;}
+.badge-new{background:var(--accent);}
+.badge-hot{background:#7C3AED;}
+.badge-top{background:#059669;}
+.card-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:6px;}
+.card-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;line-height:1.3;color:#fff;}
+.card-spec{font-size:.78rem;color:var(--muted);line-height:1.5;flex:1;}
+.card-footer{margin-top:12px;}
+.card-buy{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);color:rgba(255,255,255,0.8);font-family:'Syne',sans-serif;font-weight:600;font-size:.78rem;padding:8px 14px;border-radius:8px;transition:.2s;width:100%;justify-content:center;}
+.card:hover .card-buy{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+.back-row{display:flex;gap:12px;margin:40px 0 0;flex-wrap:wrap;}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.7);font-family:'Syne',sans-serif;font-weight:600;font-size:.88rem;padding:11px 22px;border-radius:10px;text-decoration:none;border:1px solid var(--border);transition:.2s;}
+.btn-outline:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.25);color:#fff;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:10px;text-decoration:none;transition:.2s;}
+.btn-primary:hover{background:var(--accent-light);}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:44px 0 24px;}
+.footer-inner{max-width:1200px;margin:0 auto;padding:0 28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;}
+.footer-logo span{color:var(--accent);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{color:rgba(255,255,255,0.5);font-size:.84rem;text-decoration:none;transition:.2s;}
+.footer-links a:hover{color:#fff;}
+.footer-copy{width:100%;border-top:1px solid var(--border);padding-top:18px;margin-top:10px;font-size:.77rem;color:var(--muted);}
+
+#music-player{position:fixed;bottom:24px;right:24px;z-index:9999;background:rgba(18,18,18,0.96);border:1px solid var(--border);border-radius:60px;padding:11px 18px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:.25s;backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.6);user-select:none;}
+#music-player:hover{border-color:rgba(255,77,0,0.45);box-shadow:0 8px 36px rgba(255,77,0,0.18);transform:translateY(-2px);}
+#music-player.waiting{border-color:rgba(255,77,0,0.35);animation:mpulse 2.2s ease-in-out infinite;}
+@keyframes mpulse{0%,100%{box-shadow:0 8px 28px rgba(255,77,0,0.1);}50%{box-shadow:0 8px 36px rgba(255,77,0,0.32);}}
+.mp-icon{font-size:1rem;}
+.mp-label{font-family:'Syne',sans-serif;font-weight:600;font-size:.75rem;min-width:80px;color:rgba(255,255,255,0.75);}
+#music-player.waiting .mp-label{color:var(--accent);}
+.mp-bars{display:flex;align-items:flex-end;gap:2.5px;height:16px;}
+.mp-bars span{display:block;width:3px;border-radius:2px;background:var(--accent);}
+.mp-bars span:nth-child(1){height:5px;}.mp-bars span:nth-child(2){height:10px;}.mp-bars span:nth-child(3){height:8px;}.mp-bars span:nth-child(4){height:14px;}.mp-bars span:nth-child(5){height:7px;}
+.mp-bars.playing span:nth-child(1){animation:b1 .6s ease-in-out infinite alternate;}.mp-bars.playing span:nth-child(2){animation:b2 .5s ease-in-out infinite alternate;}.mp-bars.playing span:nth-child(3){animation:b3 .7s ease-in-out infinite alternate;}.mp-bars.playing span:nth-child(4){animation:b4 .4s ease-in-out infinite alternate;}.mp-bars.playing span:nth-child(5){animation:b5 .65s ease-in-out infinite alternate;}
+@keyframes b1{from{height:3px;}to{height:11px;}}@keyframes b2{from{height:4px;}to{height:14px;}}@keyframes b3{from{height:4px;}to{height:11px;}}@keyframes b4{from{height:3px;}to{height:16px;}}@keyframes b5{from{height:3px;}to{height:9px;}}
+</style>
+</head>
+<body>
+
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Aditya<span>Tech</span> Info</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="mobiles.html">Mobiles</a>
+      <a href="laptops.html" class="active">Laptops</a>
+    </nav>
+  </div>
+</header>
+
+<div id="music-player" class="waiting" onclick="toggleMusic()">
+  <span class="mp-icon">🎵</span>
+  <span class="mp-label">Tap to play</span>
+  <div class="mp-bars" id="bars"><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+
+<div class="page-hero">
+  <p class="page-eyebrow">Laptops</p>
+  <h1 class="page-title syne">Top Laptops<br/>— Click to Buy</h1>
+  <p class="page-sub">Gaming beasts to slim study machines — honest picks with direct buy links.</p>
+</div>
+
+<div class="products-section">
+  <div class="product-grid">
+
+    <a class="card" href="https://amzn.in/d/0aMgrjT9" target="_blank">
+      <div class="card-img-wrap"><img src="https://vishalperipherals.com/cdn/shop/files/71o1cKurYSL._SX679.jpg?v=1770733418" alt="HP Victus" loading="lazy"/><span class="card-badge badge-new">NEW</span></div>
+      <div class="card-body"><div class="card-name">HP Smartchoice Victus</div><div class="card-spec">6GB RTX 3050 • AMD Ryzen 7 7445HS • 144Hz Gaming</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0bm7j44O" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/61LOOMpEgxL._AC_UF1000,1000_QL80_.jpg" alt="Dell G15" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Dell SmartChoice G15</div><div class="card-spec">13th Gen i5-13450HX • RTX 3050 • 16GB RAM 1TB SSD</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0dINPhnE" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/81fvJauBWDL.jpg" alt="Lenovo IdeaPad Slim 3" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Lenovo IdeaPad Slim 3 12th Gen</div><div class="card-spec">Intel UHD Graphics Core i5 • 16GB RAM • Windows 11</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0j2AR2RQ" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/61+jOMbYhYL._AC_UF1000,1000_QL80_.jpg" alt="MacBook Pro 2026" loading="lazy"/><span class="card-badge badge-new">NEW</span></div>
+      <div class="card-body"><div class="card-name">Apple 2026 MacBook Pro</div><div class="card-spec">M5 Pro • Liquid Retina XDR • 48GB Unified Memory</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0er9cspC" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/71vNBnnFl7L.jpg" alt="ASUS Vivobook 14" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">ASUS Vivobook 14 Smartchoice</div><div class="card-spec">AMD Ryzen AI 5 330 • AMD Radeon iGPU</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0grdrTDs" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/611DLBKu8JL._AC_UF1000,1000_QL80_.jpg" alt="Dell Vostro 3530" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Dell 15 Vostro 3530</div><div class="card-spec">13th Gen i5-1334U • 16GB RAM • Standard Laptop</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0egCa2Cm" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/51A5XFhflQL._AC_UF1000,1000_QL80_.jpg" alt="MSI Katana 15" loading="lazy"/><span class="card-badge badge-hot">HOT</span></div>
+      <div class="card-body"><div class="card-name">MSI Katana 15 HX</div><div class="card-spec">RTX 5050 • Intel 14th Gen i5-14450HX • 144Hz</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://www.amazon.in/s?k=hp+pavilion+14+i5+2025" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/81XstkrCA8L._AC_UF1000,1000_QL80_.jpg" alt="HP 14" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">HP 14</div><div class="card-spec">Intel Core Ultra 5 125H • FHD Anti-Glare • Student/Business</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/Zo!ldluuuN" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/816n9hBWHEL.jpg" alt="Lenovo IdeaPad Slim 5" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Lenovo IdeaPad Slim 5</div><div class="card-spec">Ryzen 5 Hexa Core 7535HS • 16GB RAM • Thin & Light</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/Zkbl8cuuuN" target="_blank">
+      <div class="card-img-wrap"><img src="https://rukminim2.flixcart.com/image/480/640/xif0q/computer/5/y/j/-original-imahcyp7fmeskbw4.jpeg?q=90" alt="Dell G15 5530" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Dell G15-5530 Gaming</div><div class="card-spec">i5-13450HX • RTX 3050 • 4.6GHz Turbo</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/i1pUpmNNNN" target="_blank">
+      <div class="card-img-wrap"><img src="https://rukmini1.flixcart.com/image/1500/1500/xif0q/computer/k/7/x/-original-imahg5fwvhgzgmt5.jpeg?q=70" alt="Acer Predator Helios Neo 16" loading="lazy"/><span class="card-badge badge-hot">HOT</span></div>
+      <div class="card-body"><div class="card-name">Acer Predator Helios Neo 16</div><div class="card-spec">RTX 4050 • Intel Core i7 14th Gen 14700HX • Light</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/ZFA2HeuuuN" target="_blank">
+      <div class="card-img-wrap"><img src="https://rukminim2.flixcart.com/image/300/300/xif0q/computer/i/n/q/-original-imahgwkqrdsdqfqz.jpeg" alt="Samsung Galaxy Book5" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Samsung Galaxy Book5</div><div class="card-spec">Intel Core Ultra 5 225U • AI Metal • Thin & Light</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/05TRKl8A" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/61s1d1AhQwL._AC_UF1000,1000_QL80_.jpg" alt="Dell XPS 13" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Dell XPS 13</div><div class="card-spec">Snapdragon X Elite • 12 Core • Built-in AI</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0dfh51Va" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/71-7wPSmOJL._AC_UF1000,1000_QL80_.jpg" alt="ASUS Gaming V16" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">ASUS Gaming V16</div><div class="card-spec">RTX 3050 • Intel Core 5 210H • 1080p FHD Camera</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0dgwk4oC" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/31eBjDI7iOL._AC_UF1000,1000_QL80_.jpg" alt="Lenovo Thinkpad P16v" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Lenovo Thinkpad P16v</div><div class="card-spec">Intel Core Ultra 9 185H • AI Ready • NVIDIA RTX 3000</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/0cdpjACt" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/71yaFtjgRzL._AC_UF1000,1000_QL80_.jpg" alt="HP Omnibook 5 OLED" loading="lazy"/><span class="card-badge badge-new">NEW</span></div>
+      <div class="card-body"><div class="card-name">HP Omnibook 5 OLED</div><div class="card-spec">Snapdragon X • Qualcomm Adreno GPU • Next-Gen AI</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/ZSOIoeuuuN" target="_blank">
+      <div class="card-img-wrap"><img src="https://rukmini1.flixcart.com/image/1500/1500/xif0q/computer/1/a/f/-original-imahgfdy8czyaypq.jpeg?q=70" alt="HP OMEN AI" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">HP OMEN AI</div><div class="card-spec">AMD Ryzen AI 7 Octa Core 350 • NVIDIA GeForce RTX</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/imKaVRNNNN" target="_blank">
+      <div class="card-img-wrap"><img src="https://rukmini1.flixcart.com/image/1500/1500/xif0q/computer/c/3/u/alienware-16-area-51-gaming-laptop-dell-original-imahe4fpwqrxmzjy.jpeg" alt="Dell Alienware 16 Area 51" loading="lazy"/><span class="card-badge badge-hot">HOT</span></div>
+      <div class="card-body"><div class="card-name">Dell 16 Area 51</div><div class="card-spec">Intel Core Ultra 9 275HX • 240Hz QHD • RTX 5080</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://dl.flipkart.com/s/ZFYAYQuuuN" target="_blank">
+      <div class="card-img-wrap"><img src="https://rukminim2.flixcart.com/image/480/640/xif0q/computer/1/x/l/-original-imahgfz4ttyc9z5y.jpeg?q=90" alt="Acer NITRO LITE 16" loading="lazy"/></div>
+      <div class="card-body"><div class="card-name">Acer NITRO LITE 16</div><div class="card-spec">Intel Core i5 13th Gen 13420H • RTX 3050 • Fast Speed</div><div class="card-footer"><span class="card-buy">🛒 Buy on Flipkart</span></div></div>
+    </a>
+
+    <a class="card" href="https://amzn.in/d/07YwYvlf" target="_blank">
+      <div class="card-img-wrap"><img src="https://m.media-amazon.com/images/I/81K3kKpV75L._AC_UF350,350_QL80_.jpg" alt="ASUS ROG Strix SCAR 18" loading="lazy"/><span class="card-badge badge-hot">HOT</span></div>
+      <div class="card-body"><div class="card-name">ASUS ROG Strix SCAR 18</div><div class="card-spec">Intel Core Ultra 9 275HX • NVIDIA RTX 5090 • 240Hz</div><div class="card-footer"><span class="card-buy">🛒 Buy on Amazon</span></div></div>
+    </a>
+
+  </div>
+
+  <div class="back-row">
+    <a href="index.html" class="btn-outline">← Back to Home</a>
+    <a href="mobiles.html" class="btn-primary">📱 View Mobiles</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Aditya<span>Tech</span> Info</div>
+    <div class="footer-links">
+      <a href="mailto:adityatechinfo@gmail.com">📧 adityatechinfo@gmail.com</a>
+      <a href="https://instagram.com/adkumar2651" target="_blank">📸 @adkumar2651</a>
+    </div>
+    <p class="footer-copy">© 2026 Aditya Tech Info. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)';}}),{threshold:.08});
+document.querySelectorAll('.card').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition=`opacity .5s ease ${i*0.04}s,transform .5s ease ${i*0.04}s`;io.observe(el);});
+
+let audioCtx=null,masterGain=null,playing=false,loopInterval=null,autoplayDone=false;
+function initAudio(){if(audioCtx)return;audioCtx=new(window.AudioContext||window.webkitAudioContext)();masterGain=audioCtx.createGain();masterGain.gain.value=0.10;masterGain.connect(audioCtx.destination);}
+function playNote(freq,st,dur,type,vol){const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(masterGain);o.type=type||'sine';o.frequency.setValueAtTime(freq,st);g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(vol||0.3,st+0.05);g.gain.exponentialRampToValueAtTime(0.001,st+dur);o.start(st);o.stop(st+dur+0.1);}
+function playDrum(st,type){if(type==='kick'){const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(masterGain);o.type='sine';o.frequency.setValueAtTime(150,st);o.frequency.exponentialRampToValueAtTime(0.001,st+0.3);g.gain.setValueAtTime(0.7,st);g.gain.exponentialRampToValueAtTime(0.001,st+0.3);o.start(st);o.stop(st+0.4);}else if(type==='snare'){const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.connect(g);g.connect(masterGain);o.type='triangle';o.frequency.setValueAtTime(200,st);g.gain.setValueAtTime(0.3,st);g.gain.exponentialRampToValueAtTime(0.001,st+0.15);o.start(st);o.stop(st+0.2);const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*0.15,audioCtx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*0.4;const n=audioCtx.createBufferSource(),ng=audioCtx.createGain();n.buffer=buf;n.connect(ng);ng.connect(masterGain);ng.gain.setValueAtTime(0.2,st);ng.gain.exponentialRampToValueAtTime(0.001,st+0.15);n.start(st);}else if(type==='hihat'){const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*0.05,audioCtx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1);const n=audioCtx.createBufferSource(),ng=audioCtx.createGain(),f=audioCtx.createBiquadFilter();f.type='highpass';f.frequency.value=7000;n.buffer=buf;n.connect(f);f.connect(ng);ng.connect(masterGain);ng.gain.setValueAtTime(0.12,st);ng.gain.exponentialRampToValueAtTime(0.001,st+0.05);n.start(st);}}
+const melody=[261.63,311.13,349.23,392.00,466.16,523.25,349.23,311.13],bass=[130.81,155.56,174.61,196.00];
+function playBeat(){const now=audioCtx.currentTime,beat=60/72,bar=beat*4;for(let i=0;i<4;i++)playNote(bass[i],now+i*beat,beat*0.8,'triangle',0.22);for(let i=0;i<8;i++)if(Math.random()>0.35)playNote(melody[i],now+i*(beat/2),beat*0.6,'sine',0.16);[261.63,311.13,392.00].forEach(f=>playNote(f,now,bar*0.95,'sine',0.07));for(let i=0;i<4;i++){playDrum(now+i*beat,'kick');if(i===1||i===3)playDrum(now+i*beat,'snare');for(let h=0;h<2;h++)playDrum(now+i*beat+h*(beat/2),'hihat');}}
+function setUI(s){const p=document.getElementById('music-player'),l=document.querySelector('.mp-label'),b=document.getElementById('bars');if(s==='playing'){p.classList.remove('waiting');b.classList.add('playing');l.textContent='Now Playing';}else if(s==='paused'){p.classList.remove('waiting');b.classList.remove('playing');l.textContent='Paused';}else{p.classList.add('waiting');b.classList.remove('playing');l.textContent='Tap to play';}}
+function startMusic(){initAudio();if(audioCtx.state==='suspended')audioCtx.resume();playing=true;setUI('playing');playBeat();loopInterval=setInterval(()=>{if(playing)playBeat();},(60/72)*4*1000);}
+function pauseMusic(){playing=false;clearInterval(loopInterval);if(masterGain){masterGain.gain.setValueAtTime(masterGain.gain.value,audioCtx.currentTime);masterGain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.3);setTimeout(()=>{if(audioCtx)masterGain.gain.setValueAtTime(0.10,audioCtx.currentTime+0.05);},350);}setUI('paused');}
+function toggleMusic(){if(!playing)startMusic();else pauseMusic();}
+function tryAutoplay(){if(autoplayDone)return;autoplayDone=true;startMusic();}
+window.addEventListener('load',()=>{setUI('waiting');try{initAudio();audioCtx.resume().then(()=>{if(audioCtx.state==='running'){autoplayDone=true;startMusic();}});}catch(e){}});
+['click','touchstart','keydown','scroll','mousemove'].forEach(ev=>document.addEventListener(ev,tryAutoplay,{once:true,passive:true}));
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(playing)pauseMusic();}else if(!playing&&autoplayDone)startMusic();});
+</script>
+</body>
+</html>
